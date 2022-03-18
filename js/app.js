@@ -9,22 +9,30 @@ var app = {
   },
 
   drawBoard: function() {
-    divElement = document.getElementById('board');
+    const divElement = document.getElementById('board');
 
     // création des lignes
     for (let i = 1; i <= 4; i++) {
-      newRowElement = document.createElement('div');
+      let newRowElement = document.createElement('div');
       newRowElement.classList.add('cellRow');
       newRowElement.setAttribute('id', 'row' + i);
       divElement.append(newRowElement);
 
       // création des colonnes dans chaque ligne
       for (let i = 1; i <=6; i++) {
-        newCellElement = document.createElement('div');
+        let newCellElement = document.createElement('div');
         newCellElement.classList.add('cell');
         newRowElement.append(newCellElement);
       };
     };
+
+    // paramétrage case départ
+    const startCell = document.querySelector('.cellRow');
+    startCell.firstChild.classList.add('cellStart', 'cellCurrent');
+
+    // paramétrage case arrivée
+    const endCell = divElement.lastChild;
+    endCell.lastChild.classList.add('cellEnd');
   },
 
   handleLaunchScriptButton: function() {
